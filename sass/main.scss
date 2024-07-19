@@ -1,0 +1,20 @@
+// Variables realizadas para fuentes o colores
+
+@import "./base";
+
+@import "./components/nav";
+@import "./components/header";
+@import "./components/footer";
+
+@import "./pages/index";
+// Acá iran los nombres de las páginas utilizadas en el nuevo proyecto de E-Commerce (aún no hay ninguna)
+// @import "./pages/nosotros";
+// @import "./pages/nuestrosproductos";
+// @import "./pages/nuestrosservicios";
+// @import "./pages/contacto";
+
+.titulo-principal {
+    font-size: 1rem;
+    font-weight: bold;
+    color: red;
+}
