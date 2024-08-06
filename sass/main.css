@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Reseteo */
 * {
   margin: 0;
@@ -6,7 +5,41 @@
   box-sizing: border-box;
 }
 
-/* Tipografía para la página web (excepto banner logo) */
+.imagen-portada {
+  width: 100vw;
+  height: 60vh;
+  overflow: hidden;
+}
+.imagen-portada img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+nav {
+  text-align: center;
+}
+
+.navbar {
+  color: black;
+  background-color: black;
+}
+
+.nav-link {
+  color: white;
+  transition: transform 0.1s;
+}
+
+.nav-link:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.navbar-toggler-icon {
+  background-color: gold;
+}
+
 .titulo-principal {
   color: red;
 }
