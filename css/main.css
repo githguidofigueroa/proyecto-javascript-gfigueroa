@@ -1,0 +1,300 @@
+@charset "UTF-8";
+
+/* Importar tipografía */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+input,
+textarea {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-black {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+body {
+    background-color: #A7C7E7;
+}
+
+.imagen-portada {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.imagen-portada img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.titulo-principal {
+    color: grey;
+    font-size: 2rem;
+    text-shadow:
+        1px 1px 0 black,
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.parrafo-titulo-principal {
+    color: black;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.subtitulo-principal {
+    margin-bottom: 40px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.producto-btn {
+    margin-block: 30px;
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 1.1rem;
+}
+
+nav {
+    text-align: center;
+}
+
+.navbar {
+    color: black;
+    background-color: black;
+}
+
+.nav-link {
+    color: white;
+    transition: transform 0.1s;
+}
+
+.nav-link:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+.navbar-toggler-icon {
+    background-color: gold;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.productos.precio {
+    margin-block: 40px;
+    font-weight: bold;
+}
+
+.producto-img {
+    object-fit: cover;
+    width: 400px;
+    height: 400px;
+}
+
+.contenedor-carrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-contenedor-carrito {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-top: 90px;
+}
+
+.carrito-vacio {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.carrito-total {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+#carrito-productos {
+    font-weight: bold;
+}
+
+.carrito-producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    margin-top: 30px;
+}
+
+#vaciar-carrito {
+    margin-top: 40px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    background-color: red;
+    color: white;
+}
+
+.realizar-compra {
+    margin-top: 40px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    background-color: green;
+    color: white;
+}
+
+.contenedor-titulos-contacto {
+    text-align: center;
+}
+
+.titulo-contacto {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 150px;
+}
+
+.subtitulo-contacto {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #A7C7E7;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.input-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container button {
+    margin-top: 40px;
+}
+
+.label-formulario {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.input-formulario,
+.input-formulario-texto {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+h5 {
+    margin: 0;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+}
+
+footer a {
+    color: white;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+footer a:hover i {
+    transform: scale(1.2);
+}
+
+footer h5 {
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+footer ul li i {
+    color: white;
+    transition: transform 0.3s ease;
+}

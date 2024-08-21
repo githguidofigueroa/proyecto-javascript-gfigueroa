@@ -1,74 +1,136 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
-<!-- Recordar modificar el head en las demás pages -->
+<html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Office Calm</title>
     <link rel="icon" href="./img/iconofficecalm.png">
     <meta name="description"
         content="Office Calm: Tu tienda de confianza en productos de oficina. Ubicada en Quilmes, Bs As. Nos caracteriza la experiencia y el asesoramiento al usuario. Contamos con envíos a todo el país. Conoce nuestros productos y disfruta del mejor confort para tu lugar de trabajo.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Office Calm - Inicio</title>
-    <link rel="stylesheet" href="./sass/main.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
-
-    <header>
-        <!-- Recordar cambiar el tamaño de las imágenes -->
-        <div class="imagen-portada">
-            <img src="./img/imgportada.jpg" alt="Hombre sonriendo en su confortable escritorio">
-        </div>
-        <nav class="navbar navbar-expand-sm">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav d-flex justify-content-around w-100">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../index.html">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="./pages/acercade.html">Acerca de Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="./pages/productos.html">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="./pages/contacto.html">Contactanos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="./pages/faq.html">FAQ</a>
-                        </li>
-                    </ul>
+    <div class="text-black d-flex justify-content-around align-items-center py-3 container-fluid"> TIENDA OFFICE CALM
+    </div>
+    <div class="contenedor-global">
+        <header>
+            <nav class="navbar navbar-expand-sm">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav d-flex justify-content-around w-100">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#productos">Productos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#contacto">Contactanos</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+            </nav>
+            <div class="imagen-portada">
+                <img src="./img/imgportada.jpg" alt="Hombre sonriendo en su confortable escritorio">
             </div>
-        </nav>
-    </header>
+        </header>
+        <main class="main">
+            <h1 class="titulo-principal">¡Bienvenidos/as a Office Calm, <br>donde podrás encontrar el confort
+                que tu oficina
+                necesita!</h1>
+            <p class="parrafo-titulo-principal">Office Calm es tu destino en línea para transformar tu espacio de
+                trabajo en un oasis de orden y serenidad. Especializados en productos diseñados para optimizar la
+                organización y promover un ambiente de calma, ofrecemos una cuidada selección de artículos como
+                escritorios minimalistas, sillas ergonómicas, organizadores de escritorio y lámparas elegantes. En
+                Office Calm, entendemos la importancia de un entorno de trabajo armonioso, y nos comprometemos a
+                proporcionarte soluciones modernas y funcionales que te ayuden a concentrarte y a disfrutar de cada
+                momento en tu oficina. Descubre cómo nuestros productos pueden mejorar tu productividad y bienestar en
+                el trabajo.</p>
+            <section class="contenedor-productos" id="productos">
+                <h2 class="subtitulo-principal">Aquí podrás encontrar todos nuestros productos:</h2>
+                <div class="productos" id="lista-productos"></div>
+            </section>
 
-    <main>
+<!--  -->
 
-        <h1 class="titulo-principal-index">¡Bienvenidos, bienvenidas a Office Calm, donde podrás encontrar el confort
-            que tu oficina
-            necesita!</h1>
-        <br>
-        <h2 class="titulo-secundario-index">Productos al 50% OFF</h2>
-    </main>
+            <section class="contenedor-carrito">
+                <h4 class="titulo-contenedor-carrito">Carrito de Compras</h4>
+                <div id="carrito-vacio" class="carrito-vacio">
+                    <h4>Tu carrito está vacío.</h4>
+                </div>
+                <div class="carrito-productos d-none" id="carrito-productos"></div>
+                <button class="d-none" id="vaciar-carrito">Vaciar Carrito</button>
+                <div class="carrito-total">
+                    <h3>Total: <span id="carrito-total"></span></h3>
+                </div>
+                <button class="realizar-compra" id="realizar-compra">Realizar Compra</button>
+            </section>
 
-    <footer>
+<!--  -->
+
+            <div class="contenedor-titulos-contacto">
+                <h3 class="titulo-contacto" id="contacto">CONTACTO</h3>
+                <h4 class="subtitulo-contacto">¡Dejanos tu mensaje!</h4>
+            </div>
+            <section class="formulario">
+                <form action="" id="formulario-contacto">
+                    <div class="input-container">
+                        <h5>👨🏻👩🏻</h5>
+                        <label for="nombre-usuario" class="label-formulario"></label>
+                        <input type="text" id="nombre-usuario" class="input-formulario" placeholder="Nombre y Apellido" required>
+                    </div>
+                    <div class="input-container">
+                        <h5>📫</h5>
+                        <label for="correo-usuario" class="label-formulario"></label>
+                        <input type="email" id="correo-usuario" class="input-formulario"
+                            placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="input-container">
+                        <h5>📞</h5>
+                        <label for="telefono-usuario" class="label-formulario"></label>
+                        <input type="tel" id="telefono-usuario" class="input-formulario" placeholder="Teléfono" required>
+                    </div>
+                    <div class="input-container">
+                        <h5>✉</h5>
+                        <label for="mensaje-usuario" class="label-formulario"></label>
+                        <textarea name="" id="mensaje-usuario" class="input-formulario-texto" cols="30"
+                            placeholder="Envianos tu mensaje" required></textarea>
+                    </div>
+                    <div class="input-container">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <footer class="text-black d-flex justify-content-around align-items-center py-3 container-fluid">
+        <div class="justify-content-center align-items-center">
+            <h5 class="text-center">® Office Calm: El confort presente en cada oficina.</h5>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-content-center">
+            <div>
+                <h5 class="text-center">Redes sociales</h5>
+            </div>
+            <ul class="d-flex list-unstyled justify-content-around">
+                <li><a href="https://www.instagram.com/coderhouse/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li><a href="https://www.coderhouse.com/" target="_blank"><i class="fab fa-chrome"></i></a></li>
+                <li><a href="https://www.facebook.com/CoderHouse" target="_blank"><i
+                            class="fab fa-facebook-square"></i></a></li>
+            </ul>
+        </div>
     </footer>
-    <!-- Recordar modificar el script en las demás pages (cada una con su .js)-->
-    <script src="./js/script.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
