@@ -1,0 +1,44 @@
+[
+    {
+        "id": "escritorio-minimalista",
+        "titulo": "Escritorio Minimalista",
+        "img": "./img/escritorio-minimalista.jpg",
+        "precio": 100000,
+        "info": "Escritorios con un diseño sencillo y moderno, ideales para crear un ambiente ordenado."
+    },
+    {
+        "id": "silla-ergonomica",
+        "titulo": "Silla Ergonómica",
+        "img": "./img/silla-ergonomica.jpg",
+        "precio": 60000,
+        "info": "Sillas que combinan confort y diseño elegante, perfectas para una oficina moderna."
+    },
+    {
+        "id": "mueble-organizador",
+        "titulo": "Mueble Organizador",
+        "img": "./img/mueble-organizador.jpg",
+        "precio": 10000,
+        "info": "Optimiza tu espacio con este mueble organizador de diseño minimalista, ideal para mantener la oficina ordenada y fomentar un ambiente de calma."
+    },
+    {
+        "id": "lampara-de-escritorio",
+        "titulo": "Lámpara de Escritorio",
+        "img": "./img/lampara-escritorio.jpg",
+        "precio": 15000,
+        "info": "Lámparas con un diseño moderno que proporcionan una buena iluminación y añaden un toque estilizado al espacio."
+    },
+    {
+        "id": "archivadores-elegantes",
+        "titulo": "Archivador Elegante",
+        "img": "./img/archivador-elegante.jpg",
+        "precio": 5000,
+        "info": "Archivadores con un diseño moderno y ordenado para mantener los documentos bien organizados y accesibles."
+    },
+    {
+        "id": "soporte-para-laptop",
+        "titulo": "Soporte para Laptop",
+        "img": "./img/soporte-laptop.jpg",
+        "precio": 20000,
+        "info": "Soportes ajustables para laptops que permiten una mejor ergonomía y ayudan a mantener el área de trabajo ordenada y despejada."
+    }
+]

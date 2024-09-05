@@ -1,55 +1,64 @@
+window.onload = function () {
+    navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT${getGMTOffset(lat, lon)}`)
+            .then(response => response.json())
+            .then(data => {
+                let datetime = new Date(data.datetime);
+
+                let timeDiv = document.getElementById('time-display');
+                if (!timeDiv) {
+                    timeDiv = document.createElement('div');
+                    timeDiv.id = 'time-display';
+                    document.querySelector('header').insertAdjacentElement('afterend', timeDiv);
+                }
+
+                function updateClock() {
+                    datetime.setSeconds(datetime.getSeconds() + 1);
+                    const hours = datetime.getHours();
+                    const minutes = datetime.getMinutes().toString().padStart(2, '0');
+                    const ampm = hours >= 12 ? 'pm' : 'am';
+                    const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
+
+                    timeDiv.innerHTML = `
+                        ${formattedTime}
+                        <i class="far fa-clock" style="margin-left: 8px;"></i>
+                    `;
+                }
+
+                updateClock();
+                setInterval(updateClock, 1000);
+            })
+            .catch(error => console.error('Error al obtener la hora:', error));
+    });
+
+    function getGMTOffset(lat, lon) {
+        const offset = Math.round(lon / 15);
+        return offset >= 0 ? `+${offset}` : `${offset}`;
+    }
+};
+
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-const productos = [
-    {
-        id: "escritorio-minimalista",
-        titulo: "Escritorio Minimalista",
-        img: "./img/escritorio-minimalista.jpg",
-        precio: 100000,
-        info: "Escritorios con un diseño sencillo y moderno, ideales para crear un ambiente ordenado."
-    },
+function mostrarProductos(productos) {
+    const contenedorProductos = document.querySelector('#contenedor-productos');
 
-    {
-        id: "silla-ergonomica",
-        titulo: "Silla Ergonómica",
-        img: "./img/silla-ergonomica.jpg",
-        precio: 60000,
-        info: "Sillas que combinan confort y diseño elegante, perfectas para una oficina moderna."
-    },
+    productos.forEach(producto => {
+        const productoElement = document.createElement('div');
+        productoElement.classList.add('producto');
 
-    {
-        id: "mueble-organizador",
-        titulo: "Mueble Organizador",
-        img: "./img/mueble-organizador.jpg",
-        precio: 10000,
-        info: "Optimiza tu espacio con este mueble organizador de diseño minimalista, ideal para mantener la oficina ordenada y fomentar un ambiente de calma."
-    },
+        productoElement.innerHTML = `
+            <img src="${producto.img}" alt="${producto.titulo}">
+            <h2>${producto.titulo}</h2>
+            <p>${producto.info}</p>
+            <p>Precio: $${producto.precio}</p>
+        `;
 
-    {
-        id: "lampara-de-escritorio",
-        titulo: "Lámpara de Escritorio",
-        img: "./img/lampara-escritorio.jpg",
-        precio: 15000,
-        info: "Lámparas con un diseño moderno que proporcionan una buena iluminación y añaden un toque estilizado al espacio."
-    },
-
-    {
-        id: "archivadores-elegantes",
-        titulo: "Archivador Elegante",
-        img: "./img/archivador-elegante.jpg",
-        precio: 5000,
-        info: "Archivadores con un diseño moderno y ordenado para mantener los documentos bien organizados y accesibles."
-    },
-
-    {
-        id: "soporte-para-laptop",
-        titulo: "Soporte para Laptop",
-        img: "./img/soporte-laptop.jpg",
-        precio: 20000,
-        info: "Soportes ajustables para laptops que permiten una mejor ergonomía y ayudan a mantener el área de trabajo ordenada y despejada."
-    }
-]
-
+        contenedorProductos.appendChild(productoElement);
+    });
+}
 
 const contenedorProductos = document.querySelector("#productos");
 const carritoVacio = document.querySelector("#carrito-vacio");
@@ -59,26 +68,27 @@ const carritoProductos = document.querySelector('#carrito-productos')
 const vaciarCarrito = document.querySelector("#vaciar-carrito");
 const realizarCompra = document.querySelector("realizar-compra");
 
-productos.forEach((producto) => {
-    let div = document.createElement("div");
-    div.classList.add("producto");
-    div.innerHTML = `
-    <img class="producto-img" src="${producto.img}" alt="">
-    <h3 class="producto-titulo" >${producto.titulo} </h3>
-    <p class="producto-precio">$${producto.precio.toLocaleString('es-AR')} </p>
-    <p class="producto-info">${producto.info} </p>
-    `;
+const productos = fetch('./js/api/productos.json').then(res => res.json()).then(productos =>
+    productos.forEach((producto) => {
+        let div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+        <img class="producto-img" src="${producto.img}" alt="">
+        <h3 class="producto-titulo" >${producto.titulo} </h3>
+        <p class="producto-precio">$${producto.precio.toLocaleString('es-AR')} </p>
+        <p class="producto-info">${producto.info} </p>
+        `;
 
-    let button = document.createElement("button");
-    button.classList.add("producto-btn");
-    button.innerText = "Agregar al Carrito";
-    button.addEventListener("click", () => {
-        agregarAlCarrito(producto);
-    })
+        let button = document.createElement("button");
+        button.classList.add("producto-btn");
+        button.innerText = "Agregar al Carrito";
+        button.addEventListener("click", () => {
+            agregarAlCarrito(producto);
+        })
 
-    div.append(button);
-    listaProductos.append(div);
-});
+        div.append(button);
+        listaProductos.append(div);
+    }));
 
 const agregarAlCarrito = (producto) => {
     let productoEnCarrito = carrito.find((item) => item.id === producto.id);
@@ -161,12 +171,12 @@ vaciarCarrito.addEventListener("click", () => {
         if (result.isConfirmed) {
             carrito.length = 0;
             actualizarCarrito();
-        Swal.fire ({
-            icon: "success",
-            title: "Carrito Vacío",
-            showConfirmButton: false,
-            timer: 1500,
-        });
+            Swal.fire({
+                icon: "success",
+                title: "Carrito Vacío",
+                showConfirmButton: false,
+                timer: 1500,
+            });
         }
     })
 })
@@ -175,17 +185,17 @@ document.addEventListener('DOMContentLoaded', () => {
     actualizarCarrito()
 
     const realizarCompra = document.querySelector("#realizar-compra");
-    
+
     realizarCompra.addEventListener("click", () => {
-        if(carrito.length > 0){
+        if (carrito.length > 0) {
             Swal.fire({
-                title:"Compra realizada con éxito, <br>¡muchas gracias por visitar nuestra tienda!",
+                title: "Compra realizada con éxito, <br>¡muchas gracias por visitar nuestra tienda!",
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             });
         } else {
             Swal.fire({
-                title:"No ha seleccionado ningun producto.",
+                title: "No ha seleccionado ningun producto.",
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             });
@@ -193,11 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const form = document.querySelector('#formulario-contacto')
-    
-    form.addEventListener("submit", (e)=>{
+
+    form.addEventListener("submit", (e) => {
         e.preventDefault()
         Swal.fire({
-            title:"Formulario enviado con éxito",
+            title: "Formulario enviado con éxito",
             icon: 'success',
         });
 
@@ -210,5 +220,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         form.reset();
     })
-
 });

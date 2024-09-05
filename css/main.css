@@ -37,7 +37,10 @@ a {
 }
 
 body {
-    background-color: #A7C7E7;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #A4D8D8;
 }
 
 .imagen-portada {
@@ -64,7 +67,7 @@ body {
         -1px -1px 0 black,
         1px -1px 0 black,
         -1px 1px 0 black;
-    margin-top: 100px;
+    margin-top: 70px;
     text-align: center;
 }
 
@@ -206,20 +209,12 @@ nav {
     font-weight: bold;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-
 .formulario {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #A7C7E7;
+    background-color: #A4D8D8;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -297,4 +292,20 @@ footer h5 {
 footer ul li i {
     color: white;
     transition: transform 0.3s ease;
+}
+
+#time-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5em; 
+    color: black;  
+    background-color: rgb(228, 228, 127);
+    border: 1px solid black; 
+    border-radius: 10px;
+    padding: 10px;  
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    width: fit-content;
 }
