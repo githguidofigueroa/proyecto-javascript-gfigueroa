@@ -1,45 +1,3 @@
-window.onload = function () {
-    navigator.geolocation.getCurrentPosition((position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT${getGMTOffset(lat, lon)}`)
-            .then(response => response.json())
-            .then(data => {
-                let datetime = new Date(data.datetime);
-
-                let timeDiv = document.getElementById('time-display');
-                if (!timeDiv) {
-                    timeDiv = document.createElement('div');
-                    timeDiv.id = 'time-display';
-                    document.querySelector('header').insertAdjacentElement('afterend', timeDiv);
-                }
-
-                function updateClock() {
-                    datetime.setSeconds(datetime.getSeconds() + 1);
-                    const hours = datetime.getHours();
-                    const minutes = datetime.getMinutes().toString().padStart(2, '0');
-                    const ampm = hours >= 12 ? 'pm' : 'am';
-                    const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
-
-                    timeDiv.innerHTML = `
-                        ${formattedTime}
-                        <i class="far fa-clock" style="margin-left: 8px;"></i>
-                    `;
-                }
-
-                updateClock();
-                setInterval(updateClock, 1000);
-            })
-            .catch(error => console.error('Error al obtener la hora:', error));
-    });
-
-    function getGMTOffset(lat, lon) {
-        const offset = Math.round(lon / 15);
-        return offset >= 0 ? `+${offset}` : `${offset}`;
-    }
-};
-
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function mostrarProductos(productos) {
@@ -182,6 +140,49 @@ vaciarCarrito.addEventListener("click", () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        function getGMTOffset(lat, lon) {
+            const offset = Math.round(lon / 15);
+            return offset >= 0 ? `+${offset}` : `${offset}`;
+        }
+
+        fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT${getGMTOffset(lat, lon)}`)
+            .then(response => response.json())
+            .then(data => {
+                let datetime = new Date(data.datetime);
+                console.log(datetime)
+
+                let timeDiv = document.getElementById('time-display');
+                if (!timeDiv) {
+                    timeDiv = document.createElement('div');
+                    timeDiv.id = 'time-display';
+                    document.querySelector('header').insertAdjacentElement('afterend', timeDiv);
+                }
+
+                function updateClock() {
+                    datetime.setSeconds(datetime.getSeconds() + 1);
+                    const hours = datetime.getHours();
+                    const minutes = datetime.getMinutes().toString().padStart(2, '0');
+                    const ampm = hours >= 12 ? 'pm' : 'am';
+                    const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
+
+                    timeDiv.innerHTML = `
+                        ${formattedTime}
+                        <i class="far fa-clock" style="margin-left: 8px;"></i>
+                    `;
+                }
+
+                updateClock();
+                setInterval(updateClock, 1000);
+            })
+            .catch(error => console.error('Error al obtener la hora:', error));
+    });
+
+
     actualizarCarrito()
 
     const realizarCompra = document.querySelector("#realizar-compra");
