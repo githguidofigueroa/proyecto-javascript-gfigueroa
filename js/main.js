@@ -1,5 +1,3 @@
-// Tu código existente para el carrito y otros elementos...
-
 window.onload = function () {
     navigator.geolocation.getCurrentPosition((position) => {
         const lat = position.coords.latitude;
@@ -9,7 +7,6 @@ window.onload = function () {
             .then(response => response.json())
             .then(data => {
                 let datetime = new Date(data.datetime);
-
                 let timeDiv = document.getElementById('time-display');
                 if (!timeDiv) {
                     timeDiv = document.createElement('div');
@@ -23,17 +20,14 @@ window.onload = function () {
                     const minutes = datetime.getMinutes().toString().padStart(2, '0');
                     const ampm = hours >= 12 ? 'pm' : 'am';
                     const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
-
                     timeDiv.innerHTML = `
                         ${formattedTime}
                         <i class="far fa-clock" style="margin-left: 8px;"></i>
                     `;
                 }
-
                 updateClock();
                 setInterval(updateClock, 1000);
             })
-            .catch(error => console.error('Error al obtener la hora:', error));
     });
 
     function getGMTOffset(lat, lon) {
@@ -41,49 +35,6 @@ window.onload = function () {
         return offset >= 0 ? `+${offset}` : `${offset}`;
     }
 };
-
-// Resto de tu código para el carrito y otros elementos...
-// window.onload = function () {
-//     navigator.geolocation.getCurrentPosition((position) => {
-//         const lat = position.coords.latitude;
-//         const lon = position.coords.longitude;
-
-//         fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT${getGMTOffset(lat, lon)}`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 let datetime = new Date(data.datetime);
-
-//                 let timeDiv = document.getElementById('time-display');
-//                 if (!timeDiv) {
-//                     timeDiv = document.createElement('div');
-//                     timeDiv.id = 'time-display';
-//                     document.querySelector('header').insertAdjacentElement('afterend', timeDiv);
-//                 }
-
-//                 function updateClock() {
-//                     datetime.setSeconds(datetime.getSeconds() + 1);
-//                     const hours = datetime.getHours();
-//                     const minutes = datetime.getMinutes().toString().padStart(2, '0');
-//                     const ampm = hours >= 12 ? 'pm' : 'am';
-//                     const formattedTime = `${hours % 12 || 12}:${minutes} ${ampm}`;
-
-//                     timeDiv.innerHTML = `
-//                         ${formattedTime}
-//                         <i class="far fa-clock" style="margin-left: 8px;"></i>
-//                     `;
-//                 }
-
-//                 updateClock();
-//                 setInterval(updateClock, 1000);
-//             })
-//             .catch(error => console.error('Error al obtener la hora:', error));
-//     });
-
-//     function getGMTOffset(lat, lon) {
-//         const offset = Math.round(lon / 15);
-//         return offset >= 0 ? `+${offset}` : `${offset}`;
-//     }
-// };
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -127,10 +78,11 @@ const productos = fetch('./js/api/productos.json').then(res => res.json()).then(
         let button = document.createElement("button");
         button.classList.add("producto-btn");
         button.innerText = "Agregar al Carrito";
+        div.append(button);
+        listaProductos.append(div);
         button.addEventListener("click", () => {
             agregarAlCarrito(producto);
         })
-
         div.append(button);
         listaProductos.append(div);
     }));
@@ -165,7 +117,6 @@ function actualizarCarrito() {
 
     carritoProductos.innerHTML = "";
     carrito.forEach((producto) => {
-        console.log(producto)
         let div = document.createElement("div");
         div.classList.add("carrito-producto");
         div.innerHTML = `
@@ -260,8 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const correo = document.getElementById("correo-usuario").value;
         const telefono = document.getElementById("telefono-usuario").value;
         const mensaje = document.getElementById("mensaje-usuario").value;
-
-        console.log(`Nombre: ${nombre}, Correo: ${correo}, Teléfono: ${telefono}, Mensaje: ${mensaje}`);
 
         form.reset();
     })

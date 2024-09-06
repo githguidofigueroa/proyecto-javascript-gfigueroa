@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/* Importar tipografía */
-
 * {
     margin: 0;
     padding: 0;
@@ -37,7 +35,7 @@ a {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'SUSE', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #A4D8D8;
@@ -67,21 +65,23 @@ body {
         -1px -1px 0 black,
         1px -1px 0 black,
         -1px 1px 0 black;
-    margin-top: 70px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
 .parrafo-titulo-principal {
     color: black;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-top: 40px;
-    margin-bottom: 30px;
     text-align: center;
+    padding: 70px;
 }
 
 .subtitulo-principal {
-    margin-bottom: 40px;
-    margin-top: 100px;
+    margin-bottom: 65px;
+    margin-top: 65px;
     text-align: center;
 }
 
@@ -93,6 +93,10 @@ body {
     background-color: black;
     color: white;
     font-size: 1.1rem;
+}
+
+.producto-btn:hover {
+    background-color: #45a049;
 }
 
 nav {
@@ -126,7 +130,6 @@ nav {
     font-weight: bold;
     font-size: 1.3rem;
     justify-items: center;
-    align-items: center;
 }
 
 .productos.precio {
@@ -216,8 +219,6 @@ nav {
     height: 100vh;
     background-color: #A4D8D8;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
@@ -295,17 +296,13 @@ footer ul li i {
 }
 
 #time-display {
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.5em; 
-    color: black;  
-    background-color: rgb(228, 228, 127);
-    border: 1px solid black; 
-    border-radius: 10px;
-    padding: 10px;  
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-    width: fit-content;
+    font-size: 1.5em;
+    color: #A4D8D8;
+    background-color: black;
+    padding: 10px;
 }
