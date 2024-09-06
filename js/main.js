@@ -70,9 +70,13 @@ const productos = fetch('./js/api/productos.json').then(res => res.json()).then(
         div.classList.add("producto");
         div.innerHTML = `
         <img class="producto-img" src="${producto.img}" alt="">
-        <h3 class="producto-titulo" >${producto.titulo} </h3>
-        <p class="producto-precio">$${producto.precio.toLocaleString('es-AR')} </p>
-        <p class="producto-info">${producto.info} </p>
+        <div>
+            <h3 class="producto-titulo" >${producto.titulo} </h3>
+            <p class="producto-precio">$${producto.precio.toLocaleString('es-AR')} </p>
+        </div>
+        <div class="w-75">
+            <p class="producto-info">${producto.info} </p>
+        </div>
         `;
 
         let button = document.createElement("button");
@@ -96,7 +100,7 @@ const agregarAlCarrito = (producto) => {
     }
 
     Swal.fire({
-        title: producto.titulo + " <br>¡agregado con éxito!",
+        title: producto.titulo + " <br>¡Agregado con éxito!",
         icon: 'success',
         confirmButtonText: 'Continuar'
     })
@@ -117,16 +121,20 @@ function actualizarCarrito() {
 
     carritoProductos.innerHTML = "";
     carrito.forEach((producto) => {
+        const precioTotal = producto.precio * producto.cantidad
         let div = document.createElement("div");
         div.classList.add("carrito-producto");
         div.innerHTML = `
         <div class="d-flex">
-            <h3 class="me-5">${producto.titulo}</h3>
+            <h3 class="me-5 mb-3">${producto.titulo}</h3>
             <button class="carrito-producto-btn">❌</button>
         </div>
         <div>
-            <p>Precio: $${producto.precio.toLocaleString('es-AR')}</p>
+            <p>Precio unitario: $${producto.precio.toLocaleString('es-AR')}</p>
             <p>Cantidad: ${producto.cantidad}</p>
+        </div>
+        <div>
+            <p>Precio total: $${precioTotal.toLocaleString('es-AR')}
         </div>
         `;
 
@@ -189,6 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             });
+            carrito.length = 0;
+            actualizarCarrito();
         } else {
             Swal.fire({
                 title: "No ha seleccionado ningun producto.",

@@ -76,23 +76,22 @@ body {
     font-weight: bold;
     margin-top: 40px;
     text-align: center;
-    padding: 70px;
 }
 
 .subtitulo-principal {
-    margin-bottom: 65px;
-    margin-top: 65px;
+    margin: 7rem 0 6rem;
     text-align: center;
 }
 
 .producto-btn {
     margin-block: 30px;
     width: 180px;
-    height: 30px;
+    /* height: 30px; */
     border-radius: 10px;
     background-color: black;
     color: white;
     font-size: 1.1rem;
+    padding: 0.3rem 1rem
 }
 
 .producto-btn:hover {
@@ -132,6 +131,18 @@ nav {
     justify-items: center;
 }
 
+.producto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.producto-titulo{
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
 .productos.precio {
     margin-block: 40px;
     font-weight: bold;
@@ -168,24 +179,41 @@ nav {
 }
 
 #carrito-productos {
+    gap: 3rem;
+    display: flex;
+    flex-direction: column;
     font-weight: bold;
+    border: 1px solid;
+    padding: 2rem;
+    border-radius: 26px;
+    margin-top: 2rem;
+    -moz-box-shadow: 7px 19px 46px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 7px 19px 46px -8px rgba(0, 0, 0, 0.75);
+
 }
 
 .carrito-producto {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     font-size: 1.3rem;
-    margin-top: 30px;
+
 }
 
 #vaciar-carrito {
     margin-top: 40px;
     border-radius: 8px;
     font-size: 1.2rem;
-    background-color: red;
+    background-color: #c32f2f;
     color: white;
+    padding: 0.5rem 1rem;
+    transition: all .5s ease;
+}
+
+#vaciar-carrito:hover{
+    background-color: white;
+    color: #c32f2f;
 }
 
 .realizar-compra {
@@ -194,6 +222,13 @@ nav {
     font-size: 1.2rem;
     background-color: green;
     color: white;
+    padding: 0.5rem 1rem;
+    transition: all .5s ease;
+}
+
+#realizar-compra:hover{
+    background-color: white;
+    color: green;
 }
 
 .contenedor-titulos-contacto {
@@ -216,10 +251,17 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 70vh;
     background-color: #A4D8D8;
     padding: 30px;
     width: 100%;
+}
+
+#formulario-contacto{
+    border: 1px solid lightcyan;
+    background-color: #ede6e685;
+    border-radius: 10px;
+    padding: 2rem 3rem
 }
 
 .input-container {
