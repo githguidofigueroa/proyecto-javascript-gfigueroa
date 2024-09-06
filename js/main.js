@@ -150,7 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return offset >= 0 ? `+${offset}` : `${offset}`;
         }
 
-        fetch(`http://worldtimeapi.org/api/timezone/Etc/GMT${getGMTOffset(lat, lon)}`)
+        fetch(`https://worldtimeapi.org/api/timezone/Etc/GMT${getGMTOffset(lat, lon)}`)
+
             .then(response => response.json())
             .then(data => {
                 let datetime = new Date(data.datetime);
